@@ -16,6 +16,8 @@ namespace FoodOrder.Models
         public DbSet<MembershipType> MembershipTypes { get; set; }
 
         public DbSet<Genre> Genres { get; set; }
+
+        public DbSet<Rental> Rentals { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
