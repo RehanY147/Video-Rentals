@@ -27,5 +27,6 @@ namespace FoodOrder.Models {
         [Required]
         [Range(1,10)]
         public byte NumberInStock { get; set; }
+
     }
 }
