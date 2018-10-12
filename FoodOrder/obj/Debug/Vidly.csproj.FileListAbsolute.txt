@@ -124,3 +124,4 @@ C:\Users\rehan\Documents\GitHub\Video Rentals\FoodOrder\obj\Debug\Vidly.csproj.G
 C:\Users\rehan\Documents\GitHub\Video Rentals\FoodOrder\obj\Debug\FoodOrder.dll
 C:\Users\rehan\Documents\GitHub\Video Rentals\FoodOrder\obj\Debug\FoodOrder.pdb
 C:\Users\rehan\Documents\GitHub\Video Rentals\FoodOrder\obj\Debug\FoodOrder.Migrations.AddRentalToModels.resources
+C:\Users\rehan\Documents\GitHub\Video Rentals\FoodOrder\obj\Debug\FoodOrder.Migrations.AddNumberAvailableToMovie.resources

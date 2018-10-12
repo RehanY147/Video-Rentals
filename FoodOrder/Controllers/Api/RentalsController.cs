@@ -6,7 +6,6 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using System.Web.Mvc;
 
 namespace FoodOrder.Controllers.Api
 {
@@ -23,18 +22,20 @@ namespace FoodOrder.Controllers.Api
             _context.Dispose();
         }
 
+        [HttpPost]
         public IHttpActionResult AddRental(RentalDto rentalDto) {
+          
+            var customer = _context.Customers.Single(c => c.Id == rentalDto.CustomerId);
 
-            var customer = _context.Customers.SingleOrDefault(c => c.Id == rentalDto.CustomerId);
-
-            var movies = _context.Movies.Where(m => rentalDto.MovieIds.Contains(m.Id));
-
+            var movies = _context.Movies.Where(m => rentalDto.MovieIds.Contains(m.Id)).ToList();
+            
             foreach(var movie in movies) {
 
-                if(movie.NumberInStock<=0) {
-                    return BadRequest("Movie '"+movie.Name+"' out of stock.");
+                if(movie.NumberAvailable==0) {
+                    return BadRequest("Movie out of stock.");
                 }
-                movie.NumberInStock--;
+
+                movie.NumberAvailable--;
                 var rental = new Rental {
                     CustomerId = rentalDto.CustomerId,
                     MovieId = movie.Id,
@@ -42,10 +43,10 @@ namespace FoodOrder.Controllers.Api
                 };
 
                 _context.Rentals.Add(rental);
-
-
             }
+
             _context.SaveChanges();
+
             return Ok();
         }
     }
